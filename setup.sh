@@ -23,7 +23,7 @@ cd /etc/uwsgi/apps-available/;
 UWSGI_APP="
 [uwsgi]
 chmod-socket = 777\n
-chdir = /home/ubuntu/bfr/\n
+chdir = /home/rajshiv169/bfr/\n
 mount = wsgi.py\n
 plugin = python\n
 module = wsgi\n
@@ -50,7 +50,7 @@ server {\n
 \tserver_name <domain/ip>;\n
 \tlocation = /favicon.ico { access_log off; log_not_found off; }\n
 location /static/ {\n
-\troot /home/ubuntu/bfr;\n
+\troot /home/rajshiv169/bfr;\n
 }\n
 \tlocation / {\n
 \tinclude uwsgi_params;\n
@@ -62,8 +62,8 @@ rm ../sites-enabled/default;
 ln -s /etc/nginx/sites-available/bfr /etc/nginx/sites-enabled/default;
 
 #Write activation script.
-cd /home/ubuntu/bfr/;
-echo -e "cd /home/ubuntu/bfr/" > start.sh;
+cd /home/rajshiv169/bfr/;
+echo -e "cd /home/rajshiv169/bfr/" > start.sh;
 echo -e "nohup uwsgi_python27 -s /tmp/bfr.sock -w \"bfr:create_app()\"&" >> start.sh;
 echo -e "service nginx start" >> start.sh;
 echo -e "sudo chmod 777 /tmp/bfr.sock" >> start.sh;
@@ -79,6 +79,6 @@ chmod +x stop.sh;
 cd /etc/cron.d/;
 echo -e "SHELL=/bin/sh" > bfr;
 echo -e "PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin" >> bfr;
-echo -e "@reboot   root    /home/bfr/bfr/start.sh" >> bfr;
+echo -e "@reboot   root    /home/rajshiv169/bfr/start.sh" >> bfr;
 
 reboot;
